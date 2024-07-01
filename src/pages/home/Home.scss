@@ -1,5 +1,5 @@
 .home {
-    background-color: #030b6b;
+    background-color: #002f0a;
     min-height: 100vh;
   
     & nav {
@@ -28,9 +28,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
   
-  .hero-text {
+  .home-text {
     width: 50%;
     & > * {
       color: #fff;
@@ -39,19 +40,26 @@
     & > h2 span {
       display: block;
     }
-    & .hero-buttons a {
+    & .home-buttons a {
       color: #fff;
     }
   }
-  .hero-image {
+  .home-image {
     width: 50%;
   }
-  @media screen and (max-width: 600px) {
+
+  .home-image img{
+    width: 100%;
+    height: auto;
+    float: left;
+  }
+
+  @media screen and (max-width: 500px) {
     .hero {
       flex-direction: column;
     }
   
-    .hero-text {
+    .home-text {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -59,11 +67,14 @@
       width: 100%;
       margin: auto;
       text-align: center;
+      margin-left: 20%;
+      float: right;
     }
-    .hero-image {
+    .home-image {
       width: 100%;
       &img {
         width: 100%;
+        float: left;
       }
     }
   }

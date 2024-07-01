@@ -13,9 +13,14 @@ const filterSlice = createSlice({
         const {products, search} = action.payload;
 
         const tempProduct = products.filter(
-          (product =>
-          product.name.toLowerCase().includes(search.toLowerCase())
-        ));
+          (product) =>
+          product.name.toLowerCase().includes(search.toLowerCase()) ||
+          product.statusDevice.toLowerCase().includes(search.toLowerCase()) ||
+          product.category.toLowerCase().includes(search.toLowerCase()) ||
+          product.inventorynumber.toLowerCase().includes(search.toLowerCase()) ||
+          product.serialnumber?.toLowerCase().includes(search.toLowerCase())
+        );
+
         state.filtered = tempProduct;
     },
   }
@@ -23,7 +28,6 @@ const filterSlice = createSlice({
 
 export const {FILTER_PRODUCTS} = filterSlice.actions;
 
-export const selectFiltered = (state) => state.filter.filtered;
-
+export const selectFiltered = (state) =>  state.filter.filtered;
 
 export default filterSlice.reducer;

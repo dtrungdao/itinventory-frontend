@@ -3,7 +3,7 @@ import './Profile.scss'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../redux/features/auth/authSlice'
 import Card from '../../components/card/Card'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { userUpdate } from '../../services/authService'
 import { toast } from 'react-toastify'
 import UpdatePassword from '../../components/password/UpdatePassword'
@@ -40,6 +40,7 @@ const EditProfile = () => {
         setProfile({...profile, [name]: value});
     };
 
+    //Handle when uploading image
     const handleImage = (e) => {
         setProfileImage(e.target.files[0])
     }
@@ -53,12 +54,12 @@ const EditProfile = () => {
             phone: profile.phone,
             department: profile.department,
             bio: profile.bio,
-            photo: profile.photo, //problem to be solved
+            photo: profile.photo,
         }
 
         const data = await userUpdate(formData)
         console.log(data)
-        toast.success("User updated")
+        toast.success("Profile updated")
         navigate("/profile")
         setIsLoading(false)
     }
@@ -66,9 +67,9 @@ const EditProfile = () => {
   return (
     <div className='profile --my2'>
         {isLoading}
-        <Card cardClass={"card --flex-dir-column"}>
+        <Card cardClass={"card --flex-column"}>
             <span className='profile-photo'>
-                <img src={user?.photo} alt='profilepic' />
+                <img src={user?.photo} alt='profile-img' />
             </span>
 
             <form className='--form-control --m' onSubmit={saveProfile}>
@@ -106,8 +107,6 @@ const EditProfile = () => {
                     <label>Description: </label>
                     <input type='text' name='bio' value={profile?.bio} 
                     onChange={handleInput}/>
-                    {/*<textarea type='text' name='bio' value={profile?.bio} 
-                    onChange={handleInput} cols="20" rows="10"/>*/}
                 </p>
 
                 <p> 
@@ -117,7 +116,7 @@ const EditProfile = () => {
                 </p>
 
                 <div>
-                    <button className='--btn --btn-primary'>Save Profile</button>
+                    <button className='--button --button-general'>Save Profile</button>
                 </div>
             </span>
             </form>

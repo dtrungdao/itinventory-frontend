@@ -1,20 +1,21 @@
-import { FaTh, FaRegChartBar, FaCommentAlt } from "react-icons/fa";
-import { BiImageAdd } from "react-icons/bi";
+import { MdSpaceDashboard,MdOutlineAccountBox   } from "react-icons/md";
+import { TbDeviceIpadHorizontalPlus } from "react-icons/tb";
+
 
 const menu = [
   {
     title: "Dashboard",
-    icon: <FaTh />,
+    icon: <MdSpaceDashboard />,
     path: "/dashboard",
   },
   {
-    title: "Add Product",
-    icon: <BiImageAdd />,
+    title: "Add Device",
+    icon: <TbDeviceIpadHorizontalPlus />,
     path: "/addproduct",
   },
   {
     title: "Account",
-    icon: <FaRegChartBar />,
+    icon: <MdOutlineAccountBox   />,
     childrens: [
       {
         title: "Profile",

@@ -29,7 +29,7 @@ export const deleteProduct = async (id) => {
 
 //Task update product
 export const updateProduct = async (id, formData) => {
-    const response = await axios.get(`${API_URL}${id}`, formData)
+    const response = await axios.patch(`${API_URL}${id}`, formData);
     return response.data
 }
 

@@ -51,7 +51,7 @@ const UpdatePassword = () => {
 
   return (
     <div className='updatepassword'>
-        <Card cardClass={"password-card"}>
+        <Card cardClass={"card-update"}>
             <h2>Update Password</h2>
             <form onSubmit={updateP} className='--form-control'>
 
@@ -68,7 +68,7 @@ const UpdatePassword = () => {
                 required name='newPassword2'
                 value={newPassword2} onChange={handleInput} /> 
 
-                <button type='submit' className='--btn --btn-primary'>
+                <button type='submit' className='--button --button-general'>
                     Update Password
                 </button>  
                 

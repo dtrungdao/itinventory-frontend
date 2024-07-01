@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './ProductList.scss';
 import { deleteProduct, getProducts } from "../../../redux/features/product/productSlice";
 //All icons are import from this site from github: https://react-icons.github.io/react-icons/icons/ai/
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { TbEdit } from "react-icons/tb";
+import { MdOutlineDelete  } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Search from '../../search/Search';
 import { useDispatch, useSelector } from 'react-redux';
 import { FILTER_PRODUCTS, selectFiltered } from '../../../redux/features/product/filterSlice';
+//Pagination is imported and applied from this website https://www.npmjs.com/package/react-paginate
 import ReactPaginate from 'react-paginate';
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css'; 
-import { AiOutlineEye } from "react-icons/ai";
-
 
 /*
 Show list of all devices in dashboard
@@ -56,7 +56,6 @@ const ProductList = ({products, isLoading}) => {
         },
         {
           label: 'Cancel',
-          //onClick: () => alert('Click No')
         }
       ]
     });
@@ -78,23 +77,6 @@ const ProductList = ({products, isLoading}) => {
     setItemOffset(newOffset);
   };
 
-  /*const [currentItems, setCurrentItems] = useState([]);
-  const [pageCount, setPageCount] = useState(0);
-  const [itemOffset, setItemOffset] = useState(0);
-  const itemsPerPage = 5;
-
-  useEffect(() => {
-    const endOffset = itemOffset + itemsPerPage;
-
-    setCurrentItems(filterProduct.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(filterProduct.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, filterProduct]);
-
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % filterProduct.length;
-    setItemOffset(newOffset);
-  };*/
-
   useEffect(() => {
     dispatch(FILTER_PRODUCTS({products, search}))
   }, [products, search, dispatch])
@@ -103,7 +85,7 @@ const ProductList = ({products, isLoading}) => {
     <div className='product-list'>
       <hr />
       <div className='table'>
-        <div className='--flex-between --flex-dir-column'>
+        <div className='--flex-middle --flex-column'>
           <span>
             <h2>All devices</h2>
           </span>
@@ -121,8 +103,8 @@ const ProductList = ({products, isLoading}) => {
             <table>
               <thead>
                 <tr>
-                  <th>Serial Number</th>
                   <th>Name</th>
+                  <th>Serial Number</th>
                   <th>Category</th>
                   <th>Inventory Number</th>
                   <th>Warranty until</th>
@@ -139,9 +121,9 @@ const ProductList = ({products, isLoading}) => {
                       serialnumber, guarantee, price, statusDevice} = product;
                     return (
                       <tr key={_id}>
-                        <td>{serialnumber}</td>
+                        <td>{shortenText(name, 16)}</td>
                         <td>
-                          {shortenText(name, 16)}
+                          {serialnumber}
                         </td>
                         <td>{category}</td>
                         <td>{inventorynumber}</td>
@@ -152,13 +134,13 @@ const ProductList = ({products, isLoading}) => {
                        
                           <span>
                             <Link to={`/editproduct/${_id}`}>
-                              <FaEdit size={20} color={"green"} />
+                              <TbEdit size={20} color={"#df8600"} />
                             </Link>
                           </span>
                           <span>
-                            <FaTrashAlt
+                            <MdOutlineDelete 
                               size={20}
-                              color={"red"}
+                              color={"#c81b1bd2"}
                               onClick={() => popupDelete(_id)}
                             />
                         </span>

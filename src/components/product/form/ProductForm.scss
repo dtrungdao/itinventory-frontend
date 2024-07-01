@@ -16,6 +16,7 @@
       input[type="number"],
       input[type="file"],
       input[type="email"],
+      input[type='date'],
       select,
       input[type="password"] {
         display: block;
@@ -25,15 +26,15 @@
         margin: 1rem auto;
         width: 100%;
         border: 1px solid #777;
-        border-radius: 3px;
+        border-radius: 2px;
         outline: none;
       }
     }
   }
   
   .group {
-    border: 1px solid var(--dark-blue);
-    padding: 5px;
+    border: 1px solid var(--color-dark);
+    padding: 10px;
   }
   
   .image-preview {
@@ -42,9 +43,8 @@
     max-height: 280px;
     background: var(--dark-blue);
     padding: 1rem;
-    border-radius: 3px;
+    border-radius: 2px;
     overflow: hidden;
-    // display: none;
     transition: all 0.3s;
   }
   

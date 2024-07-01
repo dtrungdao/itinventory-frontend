@@ -2,7 +2,6 @@ import {BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "./pages/home/Home";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
-import ChangePassword from "./pages/auth/ChangePassword";
 import Sidebar from "./components/sidebar/Sidebar";
 import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -32,6 +31,7 @@ function App() {
     login();
   }, [dispatch])
 
+  //Routes of all components in application
   return (
     <BrowserRouter>
     <ToastContainer />
@@ -39,7 +39,6 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
-        <Route path="/resetpassword/:resetToken" element={<ChangePassword />}/>
         <Route path="/dashboard" element={
           <Sidebar>
             <Layout>

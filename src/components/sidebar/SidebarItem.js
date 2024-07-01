@@ -15,7 +15,7 @@ const SidebarItem = ({item, open}) => {
   //If sidebar item has submenu (children)
   if (item.childrens) {
     return (
-      <div className={expand ? 'sidebar-item s-parent open' : 'sidebar-item s-parent'}>
+      <div className={expand ? 'sidebar-item sidebar-parent open' : 'sidebar-item sidebar-parent'}>
         <div className='sidebar-title'>
           <span>
             {item.icon && <div className='icon'>{item.icon}</div>}
@@ -26,7 +26,7 @@ const SidebarItem = ({item, open}) => {
         <div className='sidebar-content'>
           {item.childrens.map((child, index) => {
             return (
-              <div key={index} className='s-child'>
+              <div key={index} className='sidebar-child'>
                 <NavLink to={child.path} className={activeSublink}>
                   <div className='sidebar-item'>
                     <div className='sidebar-title'>
@@ -35,17 +35,18 @@ const SidebarItem = ({item, open}) => {
                     </div>
                   </div>
                 </NavLink>
-
               </div>
             )
           })}
         </div>
       </div>
     )
+
+    //If sidebar doesn't have sub menu
   } else{
     return (
       <NavLink to={item.path} className={activeLink}>
-        <div className='sidebar-item s-parent'>
+        <div className='sidebar-item sidebar-parent'>
           <div className='sidebar-title'>
             <span>
               {item.icon && <div className='icon'>{item.icon}</div>}

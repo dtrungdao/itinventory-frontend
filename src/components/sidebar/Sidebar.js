@@ -21,11 +21,11 @@ const Sidebar = ({children}) => {
   return (
     <div className='layout'>
         <div className='sidebar' style={{width: open ? "300px" : "70px"}}>
-          <div className='top_section'>
+          <div className='top-sidebar'>
             <div className='logo' style={{ display: open ? "block" : "none"}}>
                 <img src={telit} width="70%" height="auto" onClick = {goToHome}></img>
             </div>
-            <div className='hide-bar' style={{marginLeft: open ? "100px" : "0px"}}>
+            <div className='hide-sidebar' style={{marginLeft: open ? "100px" : "0px"}}>
               <HiMenuAlt4 size={35} onClick={hide} />
             </div>
           </div>

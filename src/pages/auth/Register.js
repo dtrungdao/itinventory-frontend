@@ -40,6 +40,9 @@ const Register = () => {
   const registerSubmit = async (e) => {
     e.preventDefault()
 
+    //Show notifications when registration is invalid
+
+
     if(!name || !email || !password){
       return toast.error("Please fill out all fields")
     }
@@ -92,11 +95,11 @@ const Register = () => {
             <input type='password' placeholder='Confirm Password' 
             required name='confirmPassword' value={confirmPassword} onChange={handleInput}/>
 
-            <button type='submit' className='--btn --btn-primary --btn-block'>Register</button>
+            <button type='submit' className='--button --button-general --button-block'>Register</button>
           </form>
 
           <span className={styles.register}>
-            <p>&nbsp; Already have an account &nbsp;</p>
+            <p>&nbsp; Click here to login &nbsp;</p>
             <Link to="/login">Go to Login</Link>
           </span>
         </div>

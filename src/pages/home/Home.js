@@ -2,14 +2,14 @@ import React from 'react'
 import { MdDevices } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import "./Home.scss";
-import heroImg from "../../assets/inv-img.png"
-import { ShowInLogin, ShowInLogout } from '../../components/protect/HiddenLink';
+import heroImg from "../../assets/home-image.webp"
+import { ShowInLogin, ShowInLogout } from '../../components/protect/ComponentInHome';
 
 
 const Home = () => {
   return (
     <div className='home'>
-        <nav className='container --flex-between'>
+        <nav className='container --flex-middle'>
             <div className='logo'>
                 <MdDevices size={35}/>
             </div>
@@ -18,7 +18,7 @@ const Home = () => {
                 {/*Register button is shown when user is logged out*/}
                 <ShowInLogout>
                     <li>
-                        <button className='--btn --btn-primary'>
+                        <button className='--button --button-general'>
                             <Link to="/register">Register</Link>
                         </button>
                     </li>
@@ -27,7 +27,7 @@ const Home = () => {
                 {/*Login button is shown when user is logged out*/}
                 <ShowInLogout>
                     <li>
-                        <button className='--btn --btn-primary'>
+                        <button className='--button --button-general'>
                             <Link to="/login">Log In</Link>
                         </button>
                     </li>
@@ -36,8 +36,8 @@ const Home = () => {
                 {/*Dashboard button is shown when user is logged in*/}
                 <ShowInLogin>   
                     <li>
-                        <button className='--btn --btn-primary'>
-                            <Link to="/dashboard">Go to dashboard</Link>
+                        <button className='--button --button-general'>
+                            <Link to="/dashboard">Dashboard</Link>
                         </button>
                     </li>
                 </ShowInLogin>
@@ -45,40 +45,30 @@ const Home = () => {
             </ul>
         </nav>
 
-        {/* NAME SHOULD BE INPUT */}
         <section className='container hero'>
-            <div className='hero-text'>
+            
+            <div className='home-image'>
+                <img src={heroImg} alt='Telit IT Inventory'/>
+            </div>
+            <div className='home-text'>
                 <h2>IT Inventory Management Telit Cinterion</h2>
-                <p>This is a description</p>
-                <div className='hero-button'>
-                    <button className='--btn --btn-secondary'>
-                        <Link to="/dashboard">Explore Inventory Management</Link>
+                <p>With over 20 years working in the IoT field, we provide secure and advanced IoT solutions. 
+                    Telit's experts have led the way in using a successful end-to-end system to ensure 
+                    all components work effiently.</p>
+                <p>This application manages all IT equipments of Telit Cinterion. 
+                    IT devices of Telit branches all over the world are controlled.
+                </p>
+                <div className='home-button'>
+                    <button className='--button --button-secondary'>
+                        <Link to="/dashboard">Device management</Link>
                     </button>
                 </div>
-                <div className='--flex-start'>
-                    <NumberText num="14K" text="Brand owners" />
-                    <NumberText num="25K" text="Active users" />
-                    <NumberText num="500+" text="Partners" />
-
-                </div>
             </div>
-            <div className='hero-image'>
-                <img src={heroImg} alt='Inventory' />
-            </div>
-
         </section>
 
     </div>
   )
 }
 
-const NumberText = ({num, text}) => {
-    return(
-        <div className='--mr'>
-            <h3 className='--color-white'>{num}</h3>
-            <p className='--color-white'>{text}</p>
-        </div>
-    )
-};
 
 export default Home

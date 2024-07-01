@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { productService } from '../../../services/productService';
+//UI Notification is imported and used in website https://www.npmjs.com/package/react-toastify
 import {toast} from 'react-toastify'
 
 
@@ -46,23 +47,7 @@ export const getProducts = createAsyncThunk(
     }
 )
 
-//Function delete a device
-export const deleteProduct = createAsyncThunk(
-    "products/delete", 
-    async (id, thunkAPI) => {
-        try {
-            return await productService.deleteProduct(id)
-        } catch (error) {
-            const message = (
-                error.response && error.response.data && error.response.data.message
-            ) || error.message || error.toString();
-            console.log(message)
-            return thunkAPI.rejectWithValue(message)
-        }
-    }
-)
-
-// Function get device information
+// Function get one device information
 export const getProduct = createAsyncThunk(
     "products/getProduct",
     async (id, thunkAPI) => {
@@ -81,6 +66,23 @@ export const getProduct = createAsyncThunk(
     }
   );
 
+//Function delete a device
+export const deleteProduct = createAsyncThunk(
+    "products/delete", 
+    async (id, thunkAPI) => {
+        try {
+            return await productService.deleteProduct(id)
+        } catch (error) {
+            const message = (
+                error.response && error.response.data && error.response.data.message
+            ) || error.message || error.toString();
+            console.log(message)
+            return thunkAPI.rejectWithValue(message)
+        }
+    }
+)
+
+
 //Function update a device
 export const updateProduct = createAsyncThunk(
     "products/updateProduct", 
@@ -97,14 +99,13 @@ export const updateProduct = createAsyncThunk(
     }
 )
 
-
-
+//Create Product slice
 const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
-
-    CALC_CATEGORY(state, action) {
+    //Calculate all categories
+    CALC_CATEGORIES(state, action) {
         const products = action.payload
         const array = []
         products.map((item) => {
@@ -114,6 +115,13 @@ const productSlice = createSlice({
         });
         const arrayCategory = [...new Set(array)]
         state.category = arrayCategory;
+    },
+
+    //Calculate all ready devices
+    CALC_READY_DEVICES(state, action){
+        const products = action.payload;
+        const readyCount = products.filter(product => product.statusDevice === 'Ready').length
+        state.readyCount = readyCount
     }
   },
   extraReducers: (builder) => {
@@ -204,12 +212,12 @@ const productSlice = createSlice({
   }
 });
 
-export const {CALC_STORE_VALUE, CALC_CATEGORY} = productSlice.actions
+export const {CALC_CATEGORIES, CALC_READY_DEVICES} = productSlice.actions
 
 export const selectIsLoading = (state) => state.product.isLoading
 export const selectCategory = (state) => state.product.category
 export const selectProduct = (state) => state.product.product
-
+export const seleceReadyProduct = (state) => state.product.readyCount
 
 
 export default productSlice.reducer

@@ -37,6 +37,8 @@ const Login = () => {
   const loginSubmit = async (e) => {
     e.preventDefault();
 
+    //Show notifications when log in is invalid
+
     if(!email || !password){
       return toast.error("Please fill out all fields")
     }
@@ -49,6 +51,8 @@ const Login = () => {
       email, password,
     };
     setIsLoading(true)
+
+    //Navigate to dashboard when login is successful
     try {
       const data = await loginUser(userData)
       console.log(data)
@@ -72,11 +76,11 @@ const Login = () => {
             value={email} onChange={handleInput} />
             <input type='password' placeholder='Password' required name='password'
             value={password} onChange={handleInput} />
-            <button type='submit' className='--btn --btn-primary --btn-block'>Login</button>
+            <button type='submit' className='--button --button-general --button-block'>Login</button>
           </form>
-          <p>Forget password? Please contact our supporting team</p>
+          <p>Forget password? Please contact our supporting team by helpdesk@telit.com</p>
           <span className={styles.register}>
-            <p>&nbsp; Don't have an account &nbsp;</p>
+            <p>&nbsp; Click here to register account &nbsp;</p>
             <Link to="/register">Register</Link>
           </span>
         </div>

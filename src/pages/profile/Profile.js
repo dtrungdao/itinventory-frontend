@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Profile.scss'
-import useRedirectLoggedOutUser from '../../customHook/useRedirectLoggedOutUser'
+import useRedirect from '../../redirectPage/useRedirect'
 import { useDispatch } from 'react-redux'
 import { userData } from '../../services/authService'
 import { SET_NAME, SET_USER } from '../../redux/features/auth/authSlice'
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 const Profile = () => {
 
-    useRedirectLoggedOutUser("/login")
+    useRedirect("/login")
 
     const dispatch = useDispatch()
 
@@ -37,9 +37,9 @@ const Profile = () => {
             {!isLoading && profile === null ? (
                 <p>Please check the page again</p>
             ) : (
-                <Card cardClass={"card --flex-dir-column"}>
+                <Card cardClass={"card --flex-column"}>
                     <span className='profile-photo'>
-                        <img src={profile?.photo} alt='profilepic' />
+                        <img src={profile?.photo} alt='profile-img' />
                     </span>
 
                     <span className='profile-data'>
@@ -50,7 +50,7 @@ const Profile = () => {
                         <p> <b>Bio: </b> {profile?.bio} </p>
                         <div>
                             <Link to="/editprofile">
-                                <button className='--btn --btn-primary'>Edit Profile</button>
+                                <button className='--button --button-general'>Edit Profile</button>
                             </Link>
                         </div>
                     </span>

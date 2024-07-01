@@ -15,6 +15,7 @@ const initialState = {
     userID: ""
 };
 
+//create auth slice for user
 const authSlice = createSlice({
   name: "auth",
   initialState,

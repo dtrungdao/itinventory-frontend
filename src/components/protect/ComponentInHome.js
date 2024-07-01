@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { selectIsLoggedIn } from '../../redux/features/auth/authSlice';
 
 //Components that are shown when user is logged in (isLoggedIn)

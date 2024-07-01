@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import ReactQuill from 'react-quill';
+//import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import "./ProductForm.scss"
 import Card from '../../card/Card';
-//import 'react-datepicker/dist/react-datepicker.css';
 import axios from "axios";
 
 const ProductForm = ({product, productImage, imagePreview, description, handleInput, 
   handleImage, handleBelongToChange, saveProduct}) => {
-  const [guaranteeDate, setGuaranteeDate] = useState(null);
+  //const [guaranteeDate, setGuaranteeDate] = useState(null);
   const [users, setUsers] = useState([]);
 
+  //Get all users information from database
   useEffect(() => {
     async function fetchUsers() {
       try {
@@ -30,7 +30,7 @@ const ProductForm = ({product, productImage, imagePreview, description, handleIn
           <Card cardClass={'group'}>
             <label>Product Image (optional)</label>
             <code className='--color-dark'>
-              Supported formats are Jpg, Jpeg & Png
+            
             </code>
             <input type='file' name='image' 
             onChange={(e) => handleImage(e)} />
@@ -61,15 +61,10 @@ const ProductForm = ({product, productImage, imagePreview, description, handleIn
 
           <label>Manufacturer and model:</label>
           <input type='text' placeholder='Device Model (required)' name='model' value={product?.model} onChange={handleInput} />
-          
-          {/* Source: https://www.npmjs.com/package/react-datepicker */}
-          {/* <label>Date of Guarantee</label>
-          <DatePicker selected={guaranteeDate} onChange={(date) => setGuaranteeDate(date)}
-          dateFormat="YYYY-MM-DD" value={product?.guaranteeDate}/> */}
+        
 
           <label>Date of Guarantee</label>
-          <input type='date' placeholder='Guarantee' name='guarantee' 
-          value={product?.guarantee} onChange={handleInput}>
+          <input type='date' placeholder='Guarantee' name='guarantee' value={product?.guarantee} onChange={handleInput}>
           </input>
 
           <label>Device Price:</label>
@@ -93,6 +88,7 @@ const ProductForm = ({product, productImage, imagePreview, description, handleIn
           <select name="belongTo" value={product?.belongTo} onChange={handleBelongToChange}>
             <option value="">Choose a user</option>
             {users.map((user) =>(
+              /* Take names of all user information */
               <option key={user._id} value={user._id}>{user.name}</option>
             ))}
           </select>
@@ -102,7 +98,7 @@ const ProductForm = ({product, productImage, imagePreview, description, handleIn
           <input type='text' placeholder='Comment (optional)' name='comment' value={product?.comment} onChange={handleInput} />
 
           <div className="--my">
-            <button type="submit" className="--btn --btn-primary">
+            <button type="submit" className="--button --button-general">
               Save Device
             </button>
           </div>

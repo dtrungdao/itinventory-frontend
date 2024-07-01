@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectIsLoggedIn } from "../../redux/features/auth/authSlice";
 import { getProducts } from "../../redux/features/product/productSlice";
 import ProductList from '../../components/product/list/ProductList';
-import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
-import ProductSummary from '../../components/product/summary/ProductSummary';
+import useRedirect from "../../redirectPage/useRedirect";
+import ProductOverview from '../../components/product/summary/ProductOverview';
 
 const Dashboard = () => {
-  useRedirectLoggedOutUser("/login");
+  useRedirect("/login");
 
   const dispatch = useDispatch()
 
@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   return (
     <div>
-        <ProductSummary products = {products}/>
+        <ProductOverview products = {products}/>
         <ProductList products = {products} isLoading = {isLoading}/>
     </div>
   )

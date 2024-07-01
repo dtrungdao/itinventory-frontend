@@ -23,12 +23,14 @@ const AddProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //dau [] trong useState la lay gia tri cua phan tu 1 va 2 trong array
   const [product, setProduct] = useState(inititalState)
   const [productImage, setProductImage] = useState("")
   const [imagePreview, setImagePreview] = useState(null)
-  //const [description, setDescription] = useState("");
 
   const isLoading = useSelector(selectIsLoading)
+
+
 
   const {name, category, inventorynumber, serialnumber, model, 
     guarantee, price, statusDevice, belongTo, description, comment} = product
@@ -40,11 +42,13 @@ const AddProduct = () => {
     setProduct({...product, [name]: value});
   }
 
+  //Handle when uploading image
   const handleImage = (e) => { 
     setProductImage(e.target.files[0])
     setImagePreview(URL.createObjectURL(e.target.files[0]))
   }
 
+  //Handle when user is choosen for device
   const handleBelongToChange = (e) => {
     setProduct({ ...product, belongTo: e.target.value });
   };
@@ -75,12 +79,11 @@ const AddProduct = () => {
     
   return <div>
     {isLoading}
-    <h3 className='--mt'>Add a new product</h3>
+    <h3 className='mt'>Add a new device</h3>
     <ProductForm 
     product = {product}
     productImage = {productImage}
     imagePreview = {imagePreview}
-    description = {description}
     handleInput = {handleInput}
     handleBelongToChange={handleBelongToChange}
     handleImage = {handleImage}
