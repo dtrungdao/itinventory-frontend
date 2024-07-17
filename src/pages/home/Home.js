@@ -51,12 +51,12 @@ const Home = () => {
                 <img src={heroImg} alt='Telit IT Inventory'/>
             </div>
             <div className='home-text'>
-                <h2>IT Inventory Management Telit Cinterion</h2>
+                <h2>IT Inventory Management</h2>
                 <p>With over 20 years working in the IoT field, we provide secure and advanced IoT solutions. 
-                    Telit's experts have led the way in using a successful end-to-end system to ensure 
+                    Our experts have led the way in using a successful end-to-end system to ensure 
                     all components work effiently.</p>
-                <p>This application manages all IT equipments of Telit Cinterion. 
-                    IT devices of Telit branches all over the world are controlled.
+                <p>This application manages all IT equipments of our company. 
+                    IT devices of company headquarters all over the world are controlled.
                 </p>
                 <div className='home-button'>
                     <button className='--button --button-secondary'>

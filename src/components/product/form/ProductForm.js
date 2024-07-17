@@ -14,7 +14,7 @@ const ProductForm = ({product, productImage, imagePreview, description, handleIn
   useEffect(() => {
     async function fetchUsers() {
       try {
-        const response = await axios.get('https://telit-inventory-api.onrender.com/api/users/getusers');
+        const response = await axios.get('https://project-inventory-api.onrender.com/api/users/getusers');
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);
