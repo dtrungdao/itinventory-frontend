@@ -14,7 +14,7 @@ const ProductForm = ({product, productImage, imagePreview, description, handleIn
   useEffect(() => {
     async function fetchUsers() {
       try {
-        const response = await axios.get('https://telit-inventory-api.onrender.com/api/users/getusers');
+        const response = await axios.get('http://localhost:5000/api/users/getusers');
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -63,7 +63,7 @@ const ProductForm = ({product, productImage, imagePreview, description, handleIn
           <input type='text' placeholder='Device Model (required)' name='model' value={product?.model} onChange={handleInput} />
         
 
-          <label>Date of Guarantee</label>
+          <label>Warranty until: </label>
           <input type='date' placeholder='Guarantee' name='guarantee' value={product?.guarantee} onChange={handleInput}>
           </input>
 
