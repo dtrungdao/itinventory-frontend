@@ -11,7 +11,6 @@ const initialState = {
     isSuccess: false,
     isLoading: false,
     message: "",
-    outOfStock: 0,
     category: [],
 }
 
@@ -86,8 +85,9 @@ export const deleteProduct = createAsyncThunk(
 //Function update a device
 export const updateProduct = createAsyncThunk(
     "products/updateProduct", 
-    async ({id}, formData, thunkAPI) => {
+    async ({id, formData}, thunkAPI) => {
         try {
+            console.log("Data: ", formData)
             return await productService.updateProduct(id, formData)
         } catch (error) {
             const message = (
@@ -151,6 +151,7 @@ const productSlice = createSlice({
             state.isLoading = false;
             state.isSuccess = true;
             state.isError = false;
+            
             console.log(action.payload);
             state.products = action.payload;
         })

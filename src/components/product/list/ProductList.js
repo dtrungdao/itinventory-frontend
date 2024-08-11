@@ -65,7 +65,7 @@ const ProductList = ({products, isLoading}) => {
   //Sources: 
   const [itemOffset, setItemOffset] = useState(0);
 
-  const itemsPerPage = 10
+  const itemsPerPage = 30
   const endOffset = itemOffset + itemsPerPage;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = filterProduct.slice(itemOffset, endOffset);

@@ -73,7 +73,7 @@ const EditProduct = () => {
     }
 
     await dispatch(updateProduct({id, formData}));
-    console.log(updateProduct);
+    await dispatch(getProduct(id))
     await dispatch(getProducts())
 
   }

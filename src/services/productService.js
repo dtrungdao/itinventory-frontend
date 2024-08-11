@@ -30,7 +30,8 @@ export const deleteProduct = async (id) => {
 //Task update product
 export const updateProduct = async (id, formData) => {
     const response = await axios.patch(`${API_URL}${id}`, formData);
-    return response.data
+    console.log("Day la response: " , response.data);
+    return response.data;
 }
 
 //Export all functions of class
